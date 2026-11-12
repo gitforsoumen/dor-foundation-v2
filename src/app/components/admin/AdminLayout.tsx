@@ -81,6 +81,7 @@ export default function AdminLayout({ onLogout, adminUser }: AdminLayoutProps) {
       <AdminHeader 
         adminUser={adminUser} 
         onLogout={onLogout}
+        onLogoClick={() => handleNavigate("dashboard")}
         onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       />
       

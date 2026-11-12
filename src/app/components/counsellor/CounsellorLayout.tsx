@@ -94,6 +94,7 @@ export default function CounsellorLayout({ onLogout, counsellorUser }: Counsello
       <CounsellorHeader
         counsellorUser={counsellorUser}
         onLogout={onLogout}
+        onLogoClick={handleBackToDashboard}
         onToggleMobileMenu={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       />
 

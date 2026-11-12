@@ -122,7 +122,7 @@ export default function App() {
       )}
 
       {currentScreen === 'dashboard' && user && (
-        <Layout user={{ name: user.name, role: 'Student' }} onLogout={handleLogout}>
+        <Layout user={{ name: user.name, role: 'Student' }} onLogout={handleLogout} onLogoClick={handleBackToDashboard}>
           <Dashboard 
             user={user} 
             onStartApplication={handleStartApplication}
@@ -135,7 +135,7 @@ export default function App() {
       )}
 
       {currentScreen === 'application' && user && (
-        <Layout user={{ name: user.name, role: 'Student' }} onLogout={handleLogout}>
+        <Layout user={{ name: user.name, role: 'Student' }} onLogout={handleLogout} onLogoClick={handleBackToDashboard}>
           <ApplicationForm 
             user={user}
             onBackToDashboard={handleBackToDashboard}
@@ -145,7 +145,7 @@ export default function App() {
       )}
 
       {currentScreen === 'slotBooking' && user && (
-        <Layout user={{ name: user.name, role: 'Student' }} onLogout={handleLogout}>
+        <Layout user={{ name: user.name, role: 'Student' }} onLogout={handleLogout} onLogoClick={handleBackToDashboard}>
           <SlotBooking 
             onBackToDashboard={handleBackToDashboard}
           />

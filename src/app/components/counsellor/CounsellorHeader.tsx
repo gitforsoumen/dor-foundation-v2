@@ -16,10 +16,11 @@ interface CounsellorHeaderProps {
     role: string;
   } | null;
   onLogout: () => void;
+  onLogoClick?: () => void;
   onToggleMobileMenu?: () => void;
 }
 
-export default function CounsellorHeader({ counsellorUser, onLogout, onToggleMobileMenu }: CounsellorHeaderProps) {
+export default function CounsellorHeader({ counsellorUser, onLogout, onToggleMobileMenu, onLogoClick }: CounsellorHeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -53,7 +54,7 @@ export default function CounsellorHeader({ counsellorUser, onLogout, onToggleMob
               </motion.button>
               
               {/* Logo */}
-              <div className="content-stretch flex gap-[10px] items-start relative shrink-0 w-[52px]">
+              <div className="content-stretch flex gap-[10px] items-start relative shrink-0 w-[52px] cursor-pointer" onClick={onLogoClick} role="button" title="Go to dashboard">
                 <div className="aspect-[62.175/60] basis-0 grow min-h-px min-w-px relative shrink-0">
                   <img 
                     alt="DOR Foundation Logo" 
@@ -102,7 +103,7 @@ export default function CounsellorHeader({ counsellorUser, onLogout, onToggleMob
                 </div>
               </div>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-[200px] bg-white border border-[#e2e8f2] rounded-[12px] shadow-[0px_3px_30px_0px_rgba(54,88,136,0.15)] p-1">
+            <DropdownMenuContent align="end" sideOffset={10} className="w-[220px] bg-white border border-[#e2e8f2] rounded-[12px] shadow-[0px_3px_30px_0px_rgba(54,88,136,0.15)] p-1">
               <DropdownMenuItem 
                 onClick={onLogout}
                 className="flex items-center gap-3 px-3 py-2.5 cursor-pointer hover:bg-[#f6f8fc] rounded-[8px] focus:bg-[#f6f8fc]"
@@ -121,8 +122,8 @@ export default function CounsellorHeader({ counsellorUser, onLogout, onToggleMob
       <div className="hidden lg:block size-full">
         <div className="box-border content-stretch flex flex-col gap-[10px] items-start px-[50px] py-[5px] relative size-full">
           <div className="content-stretch flex items-center justify-between relative shrink-0 w-full">
-            {/* Left side - Logo and Title */}
-            <div className="content-stretch flex gap-[15px] items-center relative shrink-0">
+            {/* Left side - Logo and Title (click to go to the dashboard) */}
+            <div className="content-stretch flex gap-[15px] items-center relative shrink-0 cursor-pointer" onClick={onLogoClick} role="button" title="Go to dashboard">
               <div className="h-[60px] relative shrink-0 w-[62.187px]">
                 <img 
                   alt="DOR Foundation Logo" 
@@ -130,8 +131,8 @@ export default function CounsellorHeader({ counsellorUser, onLogout, onToggleMob
                   src={logoImg} 
                 />
               </div>
-              <div className="content-stretch flex flex-col items-start leading-[normal] relative shrink-0 w-[222px]">
-                <p className="font-['Fraunces:Bold',sans-serif] font-bold relative shrink-0 text-[#a85613] text-[24px] w-full" style={{ fontVariationSettings: "'SOFT' 0, 'WONK' 1" }}>
+              <div className="content-stretch flex flex-col items-start leading-[1.25] gap-[2px] relative shrink-0 w-auto whitespace-nowrap">
+                <p className="font-['Fraunces:Bold',sans-serif] font-bold relative shrink-0 text-[#a85613] text-[22px] w-full" style={{ fontVariationSettings: "'SOFT' 0, 'WONK' 1" }}>
                   DOR Foundation
                 </p>
                 <p className="font-['Wix_Madefor_Text:Regular',sans-serif] font-normal relative shrink-0 text-[#4d4b48] text-[14px] w-full">
@@ -168,7 +169,7 @@ export default function CounsellorHeader({ counsellorUser, onLogout, onToggleMob
                   </div>
                 </div>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-[200px] bg-white border border-[#e2e8f2] rounded-[12px] shadow-[0px_3px_30px_0px_rgba(54,88,136,0.15)] p-1">
+              <DropdownMenuContent align="end" sideOffset={10} className="w-[220px] bg-white border border-[#e2e8f2] rounded-[12px] shadow-[0px_3px_30px_0px_rgba(54,88,136,0.15)] p-1">
                 <DropdownMenuItem 
                   onClick={onLogout}
                   className="flex items-center gap-3 px-3 py-2.5 cursor-pointer hover:bg-[#f6f8fc] rounded-[8px] focus:bg-[#f6f8fc]"

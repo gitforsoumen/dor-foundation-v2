@@ -15,16 +15,17 @@ interface LayoutProps {
     role: string;
   };
   onLogout?: () => void;
+  onLogoClick?: () => void;
 }
 
-export default function Layout({ children, user, onLogout }: LayoutProps) {
+export default function Layout({ children, user, onLogout, onLogoClick }: LayoutProps) {
   return (
     <div className="bg-[#f6f8fc] min-h-screen flex flex-col">
       {/* Header - Fixed */}
       <div className="bg-white border-b border-[#e2e8f2] shadow-[0px_3px_30px_0px_rgba(54,88,136,0.07)] fixed top-0 left-0 right-0 z-50">
         <div className="px-[20px] md:px-[50px] py-[5px] flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex gap-[15px] items-center">
+          {/* Logo (click to go to the dashboard) */}
+          <div className="flex gap-[15px] items-center cursor-pointer" onClick={onLogoClick} role="button" title="Go to dashboard">
             <div className="h-[60px] w-[62.187px]">
               <img 
                 alt="DOR Foundation Logo" 
@@ -33,8 +34,8 @@ export default function Layout({ children, user, onLogout }: LayoutProps) {
               />
             </div>
             {/* Title - hidden on mobile, shown on md+ screens */}
-            <div className="hidden md:flex flex-col">
-              <p className="font-['Fraunces:Bold',sans-serif] text-[#a85613] text-[24px]" style={{ fontVariationSettings: "'SOFT' 0, 'WONK' 1" }}>
+            <div className="hidden md:flex flex-col whitespace-nowrap leading-[1.25] gap-[2px]">
+              <p className="font-['Fraunces:Bold',sans-serif] text-[#a85613] text-[22px]" style={{ fontVariationSettings: "'SOFT' 0, 'WONK' 1" }}>
                 DOR Foundation
               </p>
               <p className="font-['Wix_Madefor_Text:Regular',sans-serif] text-[#4d4b48] text-[14px]">
@@ -68,7 +69,7 @@ export default function Layout({ children, user, onLogout }: LayoutProps) {
                   </div>
                 </div>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-[200px] bg-white border border-[#e2e8f2] rounded-[12px] shadow-[0px_3px_30px_0px_rgba(54,88,136,0.15)] p-1">
+              <DropdownMenuContent align="end" sideOffset={10} className="w-[220px] bg-white border border-[#e2e8f2] rounded-[12px] shadow-[0px_3px_30px_0px_rgba(54,88,136,0.15)] p-1">
                 <DropdownMenuItem 
                   onClick={onLogout}
                   className="flex items-center gap-3 px-3 py-2.5 cursor-pointer hover:bg-[#f6f8fc] rounded-[8px] focus:bg-[#f6f8fc]"
